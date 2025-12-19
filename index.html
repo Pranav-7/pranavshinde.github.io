@@ -1,0 +1,2670 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+  <head>
+    <meta charset="utf-8" />
+    <title>Pranav Shinde — Software Engineer & Blockchain Researcher</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+    <meta
+      name="description"
+      content="Software Engineer researching Privacy-preserving ML, TEE, Blockchain, and Zero-Knowledge Proofs"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+      /* Default: paused */
+      .animate-on-scroll {
+        animation-play-state: paused !important;
+      }
+      /* Activated by JS */
+      .animate-on-scroll.animate {
+        animation-play-state: running !important;
+      }
+      /* Hide scrollbar but keep functionality */
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+
+      @keyframes fadeSlideIn {
+        0% {
+          opacity: 0;
+          transform: translateY(30px);
+          filter: blur(8px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+          filter: blur(0px);
+        }
+      }
+
+      @keyframes slideInBlur {
+        0% {
+          opacity: 0;
+          transform: translateY(10px);
+          filter: blur(4px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+          filter: blur(0px);
+        }
+      }
+
+      .glow {
+        background: radial-gradient(
+          circle at center,
+          rgba(16, 185, 129, 0.15) 0%,
+          transparent 70%
+        );
+        filter: blur(20px);
+      }
+
+      /* Logo Scrolling Animation */
+      .logo-scroll-wrapper {
+        width: 100%;
+        mask-image: linear-gradient(
+          to right,
+          transparent,
+          black 10%,
+          black 90%,
+          transparent
+        );
+        -webkit-mask-image: linear-gradient(
+          to right,
+          transparent,
+          black 10%,
+          black 90%,
+          transparent
+        );
+      }
+
+      .logo-scroll-track {
+        display: flex;
+        align-items: center;
+        gap: 4rem;
+        animation: scroll-left 30s linear infinite;
+        width: fit-content;
+      }
+
+      .logo-item {
+        flex-shrink: 0;
+        width: 140px;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0.6;
+        transition: opacity 0.3s ease;
+      }
+
+      .logo-item:hover {
+        opacity: 1;
+      }
+
+      @keyframes scroll-left {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(-50%);
+        }
+      }
+
+      /* Experience Read More Styles */
+      .experience-item {
+        max-height: 1000px;
+        transition: max-height 0.3s ease-out;
+      }
+
+      .hidden-items {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+      }
+
+      .hidden-items.show {
+        max-height: 500px;
+      }
+    </style>
+    <script>
+      (function () {
+        const style = document.createElement("style");
+        style.textContent = `
+      .animate-on-scroll { animation-play-state: paused !important; }
+      .animate-on-scroll.animate { animation-play-state: running !important; }
+    `;
+        document.head.appendChild(style);
+
+        const once = true;
+        if (!window.__inViewIO) {
+          window.__inViewIO = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add("animate");
+                  if (once) window.__inViewIO.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.2, rootMargin: "0px 0px -10% 0px" }
+          );
+        }
+        window.initInViewAnimations = function (
+          selector = ".animate-on-scroll"
+        ) {
+          document.querySelectorAll(selector).forEach((el) => {
+            window.__inViewIO.observe(el);
+          });
+        };
+        document.addEventListener("DOMContentLoaded", () =>
+          initInViewAnimations()
+        );
+      })();
+    </script>
+  </head>
+  <body
+    class="antialiased text-white bg-black h-full overflow-hidden font-geist"
+  >
+    <!-- Background -->
+    <div
+      class="aura-background-component -z-10 w-full h-[1040px] absolute top-0"
+    >
+      <div
+        data-us-project="vTTCp5g4cVl9nwjlT56Z"
+        class="absolute w-full h-full left-0 top-0 -z-10"
+      ></div>
+      <script type="text/javascript">
+        !(function () {
+          if (!window.UnicornStudio) {
+            window.UnicornStudio = { isInitialized: !1 };
+            var i = document.createElement("script");
+            (i.src =
+              "https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v1.4.29/dist/unicornStudio.umd.js"),
+              (i.onload = function () {
+                window.UnicornStudio.isInitialized ||
+                  (UnicornStudio.init(),
+                  (window.UnicornStudio.isInitialized = !0));
+              }),
+              (document.head || document.body).appendChild(i);
+          }
+        })();
+      </script>
+    </div>
+
+    <!-- Main Page -->
+    <div class="h-full overflow-y-auto w-full">
+      <header class="relative">
+        <div class="sm:px-6 lg:px-8 max-w-7xl mr-auto ml-auto pr-4 pl-4">
+          <!-- Nav -->
+          <nav class="flex mt-6 items-center justify-between">
+            <a href="/" class="flex items-center gap-2">
+              <span class="text-2xl font-bold tracking-tight"
+                >Pranav Shinde</span
+              >
+            </a>
+
+            <div
+              class="hidden md:flex md:gap-x-2 bg-white/5 border-white/10 border rounded-full pt-1 pr-1 pb-1 pl-1 backdrop-blur-lg gap-x-2 gap-y-1 items-center"
+            >
+              <a
+                href="#about"
+                class="hover:text-white text-sm font-medium text-white/80 pt-2 pr-3 pb-2 pl-3"
+                >About</a
+              >
+              <a
+                href="#projects"
+                class="px-3 py-2 text-sm font-medium text-white/80 hover:text-white"
+                >Projects</a
+              >
+              <a
+                href="#experience"
+                class="px-3 py-2 text-sm font-medium text-white/80 hover:text-white"
+                >Experience</a
+              >
+              <a
+                href="#publications"
+                class="px-3 py-2 text-sm font-medium text-white/80 hover:text-white"
+                >Publications</a
+              >
+              <a
+                href="#blogs"
+                class="px-3 py-2 text-sm font-medium text-white/80 hover:text-white"
+                >Blogs</a
+              >
+              <div class="relative inline-block group text-xs rounded-full">
+                <a
+                  href="https://calendly.com/shindepranav1105/30min"
+                  class="animate-[slideInBlur_0.8s_ease-out_1.2s_forwards] relative z-10 overflow-hidden transition-[transform] duration-150 ease-out active:scale-[0.98] text-white bg-neutral-900/60 border-white/20 border pt-3 pr-6 pb-3 pl-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] text-xs rounded-full cursor-pointer inline-flex items-center gap-2"
+                  target="_blank"
+                >
+                  <span class="relative z-10 font-medium text-xs rounded-full"
+                    >Get in Touch</span
+                  >
+                </a>
+              </div>
+            </div>
+
+            <button
+              class="md:hidden inline-flex text-sm font-medium bg-white/5 border-white/10 border rounded-lg pt-2 pr-3 pb-2 pl-3 backdrop-blur gap-x-2 gap-y-2 items-center"
+              id="mobileMenuToggle"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-menu h-5 w-5"
+              >
+                <path d="M4 5h16"></path>
+                <path d="M4 12h16"></path>
+                <path d="M4 19h16"></path>
+              </svg>
+              Menu
+            </button>
+          </nav>
+
+          <!-- Hero -->
+          <section
+            class="z-10 sm:pt-20 md:pt-44 md:pb-32 text-center max-w-5xl mr-auto ml-auto pt-20 pb-32 relative"
+          >
+            <h1
+              class="sm:text-6xl md:text-7xl [animation:fadeSlideIn_1s_ease-out_0.2s_forwards] text-4xl tracking-tighter opacity-0 max-w-5xl mr-auto ml-auto"
+            >
+              Research Engineer
+            </h1>
+
+            <p
+              class="sm:text-lg [animation:fadeSlideIn_1s_ease-out_0.3s_both] text-base font-normal text-white/70 max-w-2xl mt-6 mr-auto ml-auto"
+            >
+              Building decentralized, verifiable and trustless AI systems
+            </p>
+
+            <div class="mt-12 mb-8 max-w-3xl mx-auto">
+              <p class="text-sm text-emerald-400/80 font-medium mb-4">
+                Guiding Principle
+              </p>
+              <blockquote
+                class="text-lg md:text-xl text-white/80 italic font-light"
+              >
+                "Strive for perfection in everything you do. Take the best that
+                exists and make it better. When it does not exist, design it."
+              </blockquote>
+              <p class="mt-3 text-sm text-white/50">— Sir Henry Royce</p>
+            </div>
+
+            <div
+              class="flex flex-col sm:flex-row [animation:fadeSlideIn_1s_ease-out_0.4s_both] mt-8 gap-x-3 gap-y-3 items-center justify-center"
+            >
+              <a
+                href="#projects"
+                class="group relative inline-flex min-w-[140px] cursor-pointer transition-all duration-[1000ms] ease-[cubic-bezier(0.15,0.83,0.66,1)] hover:-translate-y-[3px] hover:text-white shadow-[0_2.8px_2.2px_rgba(0,0,0,0.3),_0_6.7px_5.3px_rgba(0,0,0,0.35),_0_12.5px_10px_rgba(0,0,0,0.4)] overflow-hidden font-semibold text-neutral-400 tracking-tight bg-neutral-800 border-neutral-600 border rounded-full pt-[12px] pr-[20px] pb-[12px] pl-[20px] items-center justify-center"
+              >
+                <span
+                  class="relative z-10 font-medium rounded-full transition-all duration-500 ease-out group-hover:transform group-hover:translate-y-8 group-hover:opacity-0 group-hover:blur-md"
+                  >View Projects</span
+                >
+                <span
+                  class="absolute inset-0 z-10 flex items-center justify-center transition-all duration-300 ease-in-out transform -translate-y-8 group-hover:translate-y-0 group-hover:opacity-100 group-hover:blur-none font-medium opacity-0 rounded-full blur-md"
+                  >Explore Work</span
+                >
+                <span
+                  aria-hidden="true"
+                  class="absolute bottom-0 left-1/2 h-[1px] w-[70%] -translate-x-1/2 transition-all duration-[1000ms] ease-[cubic-bezier(0.15,0.83,0.66,1)] group-hover:opacity-80 bg-gradient-to-r from-transparent via-neutral-200 to-transparent rounded-full blur-[2px]"
+                ></span>
+                <span
+                  aria-hidden="true"
+                  class="absolute bottom-0 left-0 right-0 h-[100%] group-hover:opacity-60 transition-all duration-[1000ms] ease-[cubic-bezier(0.15,0.83,0.66,1)] pointer-events-none bg-gradient-to-t from-white/20 via-white/10 to-transparent rounded-full"
+                ></span>
+              </a>
+              <a
+                href="#blogs"
+                class="inline-flex items-center gap-2 hover:bg-white/10 text-base font-medium text-white/90 bg-white/5 border-white/10 border rounded-full pt-3 pr-6 pb-3 pl-6 backdrop-blur"
+              >
+                Read my Blogs
+              </a>
+            </div>
+          </section>
+        </div>
+      </header>
+
+      <!-- Education & Affiliations -->
+      <section
+        class="z-10 sm:px-6 lg:px-8 max-w-7xl mt-24 mr-auto ml-auto pr-6 pb-16 pl-6 relative"
+      >
+        <p
+          class="[animation:fadeSlideIn_1s_ease-out_0.5s_both] text-sm font-medium text-white/50 text-center mb-6"
+        >
+          Education & Affiliations
+        </p>
+
+        <!-- Scrolling Logos Container -->
+        <div class="logo-scroll-wrapper overflow-hidden relative">
+          <div class="logo-scroll-track">
+            <!-- First set of logos -->
+            <div class="logo-item">
+              <img
+                src="./Coral_Protocol_Vertical_Logo_White.svg"
+                alt="Coral Protocol"
+                class="max-w-full max-h-full object-contain"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="https://people.iitism.ac.in/~MAS-2024/images/iitsim.png"
+                alt="IIT Dhanbad"
+                class="max-w-full max-h-full object-contain"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./IIMB_Logo.png"
+                alt="IIM Bangalore"
+                class="max-w-full max-h-full object-contain"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="https://lh3.googleusercontent.com/proxy/-mzlcsYj45UfYOKwGhzHxFTkUS2ZgW40uhmNpmf5LxYpq75SrO6bGEZnIWAngWWVkfLmrRC8X2nFyL7aZVKh9fFkglj0Ww-U3eUH2j4"
+                alt="University of East London"
+                class="max-w-full max-h-full object-contain"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./NRiT.jpg"
+                alt="NRiT TBI"
+                class="max-w-full max-h-full object-contain"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="RIT.png"
+                alt="RIT"
+                class="max-w-full max-h-full object-contain"
+              />
+            </div>
+
+            <!-- Duplicate set for seamless loop -->
+            <div class="logo-item">
+              <img
+                src="./Coral_Protocol_Vertical_Logo_White.svg"
+                alt="Coral Protocol"
+                class="max-w-full max-h-full object-contain"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="https://people.iitism.ac.in/~MAS-2024/images/iitsim.png"
+                alt="IIT Dhanbad"
+                class="max-w-full max-h-full object-contain"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./IIMB_Logo.png"
+                alt="IIM Bangalore"
+                class="max-w-full max-h-full object-contain"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="https://lh3.googleusercontent.com/proxy/-mzlcsYj45UfYOKwGhzHxFTkUS2ZgW40uhmNpmf5LxYpq75SrO6bGEZnIWAngWWVkfLmrRC8X2nFyL7aZVKh9fFkglj0Ww-U3eUH2j4"
+                alt="University of East London"
+                class="max-w-full max-h-full object-contain"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="./NRiT.jpg"
+                alt="NRiT TBI"
+                class="max-w-full max-h-full object-contain"
+              />
+            </div>
+            <div class="logo-item">
+              <img
+                src="RIT.png"
+                alt="RIT"
+                class="max-w-full max-h-full object-contain"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Me -->
+      <section class="overflow-hidden relative" id="about">
+        <div
+          class="sm:px-6 lg:px-8 max-w-7xl mr-auto ml-auto pt-16 pr-6 pb-16 pl-6"
+        >
+          <div class="grid md:grid-cols-2 gap-x-10 gap-y-10 items-center">
+            <div>
+              <h2
+                class="text-3xl sm:text-4xl md:text-5xl [animation:fadeSlideIn_1s_ease-out_0.1s_both] animate-on-scroll tracking-tighter"
+              >
+                About Me
+              </h2>
+              <p
+                class="mt-4 text-base text-white/70 [animation:fadeSlideIn_1s_ease-out_0.2s_both] animate-on-scroll"
+              >
+                I'm working as a <strong>Software Engineer Intern</strong> at
+                Coral Protocol in London. I recently completed a Master's in
+                Blockchain and Financial Technologies with distinction at the
+                University of East London.
+              </p>
+              <p
+                class="mt-4 text-base text-white/70 [animation:fadeSlideIn_1s_ease-out_0.2s_both] animate-on-scroll"
+              >
+                I enjoy discussing topics related to AI and Blockchain, and I
+                love meeting new people. Feel free to reach out for a virtual
+                coffee chat!
+              </p>
+              <p
+                class="mt-4 text-base text-white/70 [animation:fadeSlideIn_1s_ease-out_0.2s_both] animate-on-scroll"
+              >
+                <span class="text-white">Research Interest:</span> Small
+                language models, Privacy-preserving ML, Trusted execution
+                environments, Blockchain, Zero-knowledge Proofs, Zero-trust
+                infrastructure.
+              </p>
+
+              <p
+                class="my-4 text-base text-white/70 [animation:fadeSlideIn_1s_ease-out_0.2s_both] animate-on-scroll"
+              >
+                <span class="text-white">Programming Skills:</span>
+              </p>
+
+              <ul
+                class="list-disc list-inside space-y-1 text-white/70 [animation:fadeSlideIn_1s_ease-out_0.2s_both] animate-on-scroll"
+              >
+                <li>Programming Languages: JavaScript, Python</li>
+                <li>
+                  AI Development: TensorFlow, PyTorch, scikit-learn, Pandas,
+                  NumPy, LangChain, Model Context Protocol (MCP)
+                </li>
+                <li>
+                  Blockchain Development: Solidity, Web3.js, Hardhat, Ganache,
+                  snarkjs, Docker, Kubernetes
+                </li>
+                <li>
+                  Web Development: ReactJS, Node.js, Express.js, Bootstrap,
+                  HTML, CSS, SQL, Git, GitHub
+                </li>
+              </ul>
+
+              <div
+                class="flex [animation:fadeSlideIn_1s_ease-out_0.4s_both] animate-on-scroll mt-6 gap-x-3 gap-y-3 items-center"
+              >
+                <a
+                  href="https://www.linkedin.com/in/pranav-n-shinde"
+                  target="_blank"
+                  class="inline-flex items-center gap-2 hover:bg-emerald-300 transition text-sm font-medium text-black bg-emerald-400 rounded-lg pt-2 pr-4 pb-2 pl-4"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+                    />
+                  </svg>
+                  LinkedIn
+                </a>
+                <a
+                  href="https://github.com/Pranav-7"
+                  target="_blank"
+                  class="inline-flex items-center gap-2 hover:bg-white/10 text-sm font-medium text-white/90 bg-white/5 border-white/10 border rounded-lg pt-2 pr-4 pb-2 pl-4 backdrop-blur"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                    />
+                  </svg>
+                  GitHub
+                </a>
+                <a
+                  href="mailto:shindepranav1105@gmail.com"
+                  class="inline-flex items-center gap-2 hover:bg-blue-500 transition text-sm font-medium text-white bg-blue-600 rounded-lg pt-2 pr-4 pb-2 pl-4"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"
+                    />
+                  </svg>
+                  Email
+                </a>
+              </div>
+            </div>
+            <div
+              class="[animation:fadeSlideIn_1s_ease-out_0.4s_both] animate-on-scroll relative"
+            >
+              <!-- Placeholder for photo - user needs to add their image -->
+              <div
+                class="aspect-[4/3] w-full bg-white/5 border-white/10 border rounded-2xl flex items-center justify-center text-white/40"
+              >
+                <div class="text-center">
+                  <img
+                    src="./Pranav.jpeg"
+                    alt="Your Photo Here"
+                    class="mx-auto mb-4 rounded-2xl max-w-full h-auto"
+                  />
+                </div>
+              </div>
+              <div
+                class="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-white/10"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section
+        class="z-10 sm:px-6 lg:px-8 max-w-7xl mr-auto ml-auto pt-8 pr-6 pb-20 pl-6 relative"
+        id="projects"
+      >
+        <div
+          class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8"
+        >
+          <div>
+            <p
+              class="text-sm font-medium text-white/50 [animation:fadeSlideIn_1s_ease-out_0.1s_both] animate-on-scroll"
+            >
+              Featured Work
+            </p>
+            <h2
+              class="text-3xl sm:text-4xl md:text-5xl tracking-tighter [animation:fadeSlideIn_1s_ease-out_0.2s_both] animate-on-scroll"
+            >
+              Notable Projects
+            </h2>
+          </div>
+        </div>
+
+        <div class="grid gap-6 md:grid-cols-3 gap-x-6 gap-y-6">
+          <!-- Main Project: Confidential Multi-Agent System -->
+          <div
+            class="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 md:col-span-2 md:row-span-2 [animation:fadeSlideIn_1s_ease-out_0.4s_both] animate-on-scroll"
+          >
+            <div class="relative">
+              <div
+                class="aspect-video w-full bg-gradient-to-br from-emerald-500/20 to-teal-500/20 flex items-center justify-center"
+              >
+                <div class="text-center p-8">
+                  <img src="./Phala.png" alt="Confidential Multi-Agent System" class="w-full h-full object-contain" />
+                </div>
+              </div>
+              <div
+                class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"
+              ></div>
+            </div>
+            <div class="p-5 sm:p-6">
+              <div class="flex items-center gap-2">
+                <span
+                  class="inline-flex items-center gap-1 rounded-full border border-emerald-400/30 bg-emerald-400/15 px-2 py-0.5 text-[11px] font-medium text-emerald-200"
+                  >FEATURED</span
+                >
+                <span
+                  class="inline-flex items-center gap-1 rounded-full border border-purple-400/30 bg-purple-400/15 px-2 py-0.5 text-[11px] font-medium text-purple-200"
+                  >TEE + Multi-Agent</span
+                >
+              </div>
+              <h3 class="mt-3 text-2xl sm:text-3xl tracking-tighter">
+                Confidential Multi-Agent System
+              </h3>
+              <p class="mt-2 text-sm sm:text-base text-white/70">
+                A production-ready system combining Coral Protocol and Phala Network to create a confidential, verifiable, multi-agent architecture for processing sensitive documents. Features TEE-secured computation, cryptographic attestation, and privacy-preserving agent coordination for handling confidential PDFs without exposing data to any single party.
+              </p>
+              <div class="mt-5 flex flex-wrap items-center gap-3">
+                <a
+                  href="https://drive.google.com/file/d/1Zlro-Ik7YOTSo4eSzyHP0T8mTksYQeDE/view"
+                  target="_blank"
+                  class="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-white/90 backdrop-blur hover:bg-white/10"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                    ></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                  </svg>
+                  Read Paper
+                </a>
+                <a
+                  href="https://coralprotocol.com"
+                  target="_blank"
+                  class="inline-flex items-center gap-2 text-sm font-medium text-black bg-emerald-400 rounded-lg px-4 py-2 hover:bg-emerald-300 transition"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                  </svg>
+                  Learn More
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2: TEE Solver -->
+          <div
+            class="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 [animation:fadeSlideIn_1s_ease-out_0.5s_both] animate-on-scroll"
+          >
+            <div class="sm:p-6 pt-5 pr-5 pb-5 pl-5">
+              <div class="flex items-center justify-between">
+                <h3
+                  class="text-xl font-medium tracking-tight flex items-center gap-2"
+                >
+                  TEE Solver Marketplace
+                </h3>
+                <span
+                  class="inline-flex items-center rounded-full border border-sky-400/30 bg-sky-400/15 px-2 py-0.5 text-[11px] font-medium text-sky-200"
+                  >PoC</span
+                >
+              </div>
+              <p class="mt-2 text-sm text-white/70">
+                Confidential computing PoC where solvers run inside Intel SGX
+                enclaves. Logic and inputs remain private while results are
+                cryptographically attested for DeFi applications.
+              </p>
+              <div
+                class="mt-4 rounded-lg overflow-hidden border border-white/10 bg-gradient-to-br from-sky-500/10 to-purple-500/10 aspect-video flex items-center justify-center"
+              >
+                <img src="./TEE_Exec_flow.png" alt="TEE Solver Execution Flow" />
+              </div>
+              <div class="mt-4">
+                <a
+                  href="https://drive.google.com/file/d/1QfiScZ-syWxI-M1I1MQrrhGlpFlrZDI1/view"
+                  target="_blank"
+                  class="text-sm text-emerald-400 hover:text-emerald-300"
+                  >Watch Demo →</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3: Telecom Multi-Agent Systems -->
+          <div
+            class="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 [animation:fadeSlideIn_1s_ease-out_0.6s_both] animate-on-scroll"
+          >
+            <div class="sm:p-6 pt-5 pr-5 pb-5 pl-5">
+              <div class="flex items-center justify-between">
+                <h3
+                  class="text-lg font-medium tracking-tight flex items-center gap-2"
+                >
+                  Telecom Multi-Agent Systems
+                </h3>
+                <span
+                  class="inline-flex items-center rounded-full border border-purple-400/30 bg-purple-400/15 px-2 py-0.5 text-[11px] font-medium text-purple-200"
+                  >Coral Protocol</span
+                >
+              </div>
+              <p class="mt-2 text-sm text-white/70">
+                Customer Validation and Screening is an automated, agent-based
+                workflow built on Open Gateway APIs using the Coral Protocol. It
+                enables enterprises to verify user identity, device integrity,
+                location, SIM status, and tenure in real time.
+              </p>
+              <div
+                class="mt-4 rounded-lg overflow-hidden border border-white/10 bg-gradient-to-br from-purple-500/10 to-pink-500/10 aspect-video flex items-center justify-center"
+              >
+                <img src="./TelecomMAS.png" alt="Telecom Multi-Agent System" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 4: ONDC Blockchain -->
+          <div
+            class="overflow-hidden bg-white/5 border-white/10 border rounded-2xl relative [animation:fadeSlideIn_1s_ease-out_0.1s_both] animate-on-scroll"
+          >
+            <div class="sm:p-6 pt-5 pr-5 pb-5 pl-5">
+              <h3
+                class="text-lg font-medium tracking-tight flex items-center gap-2"
+              >
+                ONDC E-Commerce
+              </h3>
+              <p class="mt-2 text-sm text-white/70">
+                Permissioned Hyperledger Fabric blockchain for India's ONDC with
+                performance benchmarking using Caliper.
+              </p>
+              <div
+                class="mt-4 rounded-lg overflow-hidden border border-white/10 bg-gradient-to-br from-orange-500/10 to-red-500/10 aspect-video flex items-center justify-center"
+              >
+                <span class="text-4xl">🛒</span>
+              </div>
+              <div class="mt-4">
+                <a
+                  href="https://drive.google.com/file/d/1hQoMY98-6yYtLlPbFyu3CU7yAY9zJqmc/view"
+                  target="_blank"
+                  class="text-sm text-emerald-400 hover:text-emerald-300"
+                  >Read Paper →</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 5: Wallet Clustering -->
+          <div
+            class="overflow-hidden [animation:fadeSlideIn_1s_ease-out_0.2s_both] animate-on-scroll bg-white/5 border-white/10 border rounded-2xl relative"
+          >
+            <div class="sm:p-6 pt-5 pr-5 pb-5 pl-5">
+              <h3
+                class="text-lg font-medium tracking-tight flex items-center gap-2"
+              >
+                Wallet Clustering
+              </h3>
+              <p class="mt-2 text-sm text-white/70">
+                Heuristic algorithms for clustering 75,000+ HEX wallets and
+                decoding 53,000 Bitcoin/Ethereum addresses using API analysis.
+              </p>
+              <div
+                class="mt-4 rounded-lg overflow-hidden border border-white/10 bg-gradient-to-br from-indigo-500/10 to-blue-500/10 aspect-video flex items-center justify-center"
+              >
+                <span class="text-4xl">💰</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Work Experience -->
+      <section class="z-10 relative" id="experience">
+        <div
+          class="sm:px-6 lg:px-8 max-w-6xl mr-auto ml-auto pt-20 pr-4 pb-20 pl-4"
+        >
+          <div class="text-center mb-16">
+            <div
+              class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-zinc-200 backdrop-blur mb-6"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="h-3.5 w-3.5 text-emerald-300"
+              >
+                <rect width="7" height="7" x="3" y="3" rx="1"></rect>
+                <rect width="7" height="7" x="14" y="3" rx="1"></rect>
+                <rect width="7" height="7" x="14" y="14" rx="1"></rect>
+                <rect width="7" height="7" x="3" y="14" rx="1"></rect>
+              </svg>
+              Experience
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 gap-x-6 gap-y-6">
+            <!-- Coral Protocol -->
+            <div
+              class="integration-card z-10 rounded-2xl pt-[1px] pr-[1px] pb-[1px] pl-[1px] relative"
+              style="
+                background: radial-gradient(
+                  circle 230px at 0% 0%,
+                  rgba(16, 185, 129, 0.4),
+                  #0c0d0d
+                );
+              "
+            >
+              <div
+                class="animated-dot bg-emerald-400 w-[5px] h-[5px] z-[2] rounded-full absolute"
+                style="
+                  box-shadow: 0 0 10px rgba(16, 185, 129, 0.8);
+                  right: 10%;
+                  top: 10%;
+                  animation: moveDot 6s linear infinite;
+                  animation-play-state: paused;
+                "
+              ></div>
+              <div
+                class="hover:bg-white/10 transition-all duration-300 group z-[1] bg-white/5 h-full rounded-2xl pt-7 pr-9 pb-7 pl-9 relative backdrop-blur"
+                style="
+                  background: radial-gradient(
+                    circle 280px at 0% 0%,
+                    rgba(68, 68, 68, 0.3),
+                    #0c0d0d
+                  );
+                  border: 1px solid #202222;
+                "
+              >
+                <div
+                  class="blur-[10px] z-10 opacity-40 w-[220px] h-[45px] rounded-full absolute top-0 left-0"
+                  style="
+                    background-color: rgba(16, 185, 129, 0.3);
+                    box-shadow: 0 0 50px rgba(16, 185, 129, 0.5);
+                    transform: rotate(40deg);
+                    transform-origin: 10%;
+                  "
+                ></div>
+
+                <div class="flex z-10 relative items-start justify-between">
+                  <div
+                    class="flex w-16 h-16 rounded-xl items-center justify-center"
+                  >
+                    <img
+                      src="./Coral_Protocol_Vertical_Logo_White.svg"
+                      alt="Coral Protocol"
+                      class="w-full h-full object-contain"
+                    />
+                  </div>
+                  <span
+                    class="inline-flex items-center gap-1.5 text-xs text-emerald-300 bg-emerald-400/10 ring-emerald-400/20 ring-1 rounded-md pt-1 pr-2 pb-1 pl-2"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="h-3 w-3"
+                    >
+                      <path d="M21.801 10A10 10 0 1 1 17 3.335"></path>
+                      <path d="m9 11 3 3L22 4"></path>
+                    </svg>
+                    Current
+                  </span>
+                </div>
+
+                <h3
+                  class="mt-4 text-lg font-semibold tracking-tight text-white relative z-10"
+                >
+                  Coral Protocol
+                </h3>
+                <p class="mt-1 text-sm text-zinc-400 relative z-10">
+                  Nov 2023 – Jul 2024 · 9 mos
+                </p>
+
+                <ul
+                  class="mt-3 space-y-2 text-sm text-zinc-400 relative z-10 list-disc list-inside experience-item"
+                >
+                  <li>
+                    Designed and implemented network fault-detection multi-agent
+                    systems using Open Gateway APIs, enabling automated
+                    diagnosis and coordination across agents.
+                  </li>
+                  <li>
+                    Developed architecture diagrams and design documents for
+                    single-agent/multi-agent system use cases.
+                  </li>
+                  <div class="hidden-items" data-experience="coral">
+                    <li>
+                      Contributed to Confidential AI research, evaluating the
+                      maturity and adoption levels of Trusted Execution
+                      Environments (TEEs) and Zero-Knowledge Proofs (ZKPs) that
+                      can be applied to secure multi-agent systems.
+                    </li>
+                    <li>
+                      Building multi-agent systems and researching confidential
+                      AI with TEE and ZKP technologies.
+                    </li>
+                    <li>
+                      Assessed the scope of partnerships with confidential
+                      computing platforms, aligning their capabilities with
+                      Coral Protocol's.
+                    </li>
+                  </div>
+                </ul>
+
+                <button
+                  class="mt-3 text-xs text-emerald-400 hover:text-emerald-300 transition relative z-10 read-more-btn"
+                  data-target="coral"
+                >
+                  Read more →
+                </button>
+
+                <div
+                  class="w-full h-[1px] absolute"
+                  style="
+                    top: 10%;
+                    left: 0%;
+                    background: linear-gradient(
+                      90deg,
+                      rgba(136, 136, 136, 0.3) 30%,
+                      #1d1f1f 70%
+                    );
+                    mask-image: linear-gradient(
+                      90deg,
+                      transparent,
+                      black 15%,
+                      black 85%,
+                      transparent
+                    );
+                    -webkit-mask-image: linear-gradient(
+                      90deg,
+                      transparent,
+                      black 15%,
+                      black 85%,
+                      transparent
+                    );
+                  "
+                ></div>
+                <div
+                  class="w-[1px] h-full absolute"
+                  style="
+                    left: 10%;
+                    top: 0%;
+                    background: linear-gradient(
+                      180deg,
+                      rgba(116, 116, 116, 0.3) 30%,
+                      #222424 70%
+                    );
+                    mask-image: linear-gradient(
+                      0deg,
+                      transparent,
+                      black 15%,
+                      black 85%,
+                      transparent
+                    );
+                    -webkit-mask-image: linear-gradient(
+                      0deg,
+                      transparent,
+                      black 15%,
+                      black 85%,
+                      transparent
+                    );
+                  "
+                ></div>
+                <div
+                  class="bg-slate-50/5 w-full h-[1px] absolute"
+                  style="
+                    bottom: 10%;
+                    left: 0%;
+                    mask-image: linear-gradient(
+                      90deg,
+                      transparent,
+                      black 15%,
+                      black 85%,
+                      transparent
+                    );
+                    -webkit-mask-image: linear-gradient(
+                      90deg,
+                      transparent,
+                      black 15%,
+                      black 85%,
+                      transparent
+                    );
+                  "
+                ></div>
+                <div
+                  class="bg-slate-50/5 w-[1px] h-full absolute"
+                  style="
+                    right: 10%;
+                    top: 0%;
+                    mask-image: linear-gradient(
+                      180deg,
+                      transparent,
+                      black 15%,
+                      black 85%,
+                      transparent
+                    );
+                    -webkit-mask-image: linear-gradient(
+                      180deg,
+                      transparent,
+                      black 15%,
+                      black 85%,
+                      transparent
+                    );
+                  "
+                ></div>
+              </div>
+            </div>
+
+            <!-- IIT Dhanbad -->
+            <div
+              class="z-[1] integration-card rounded-2xl pt-[1px] pr-[1px] pb-[1px] pl-[1px] relative"
+              style="
+                background: radial-gradient(
+                  circle 230px at 0% 0%,
+                  rgba(99, 102, 241, 0.4),
+                  #0c0d0d
+                );
+              "
+            >
+              <div
+                class="z-[2] animated-dot bg-indigo-400 w-[5px] h-[5px] rounded-full absolute"
+                style="
+                  box-shadow: 0 0 10px rgba(99, 102, 241, 0.8);
+                  right: 10%;
+                  top: 10%;
+                  animation: moveDot 6s linear infinite;
+                  animation-play-state: paused;
+                "
+              ></div>
+              <div
+                class="hover:bg-white/10 transition-all duration-300 group z-[1] bg-white/5 h-full rounded-2xl pt-7 pr-9 pb-7 pl-9 relative backdrop-blur"
+                style="
+                  background: radial-gradient(
+                    circle 280px at 0% 0%,
+                    rgba(68, 68, 68, 0.3),
+                    #0c0d0d
+                  );
+                  border: 1px solid #202222;
+                "
+              >
+                <div
+                  class="blur-[10px] opacity-40 w-[220px] h-[45px] rounded-full absolute top-0 left-0"
+                  style="
+                    background-color: rgba(99, 102, 241, 0.3);
+                    box-shadow: 0 0 50px rgba(99, 102, 241, 0.5);
+                    transform: rotate(40deg);
+                    transform-origin: 10%;
+                  "
+                ></div>
+
+                <div class="flex z-10 relative items-start justify-between">
+                  <div
+                    class="flex w-16 h-16 rounded-xl items-center justify-center"
+                  >
+                    <img
+                      src="https://people.iitism.ac.in/~MAS-2024/images/iitsim.png"
+                      alt="IIT Dhanbad"
+                      class="w-full h-full object-contain"
+                    />
+                  </div>
+                  <span
+                    class="inline-flex items-center gap-1.5 rounded-md bg-zinc-400/10 px-2 py-1 text-xs text-zinc-300 ring-1 ring-zinc-400/20"
+                  >
+                    Research
+                  </span>
+                </div>
+
+                <h3
+                  class="mt-4 text-lg font-semibold tracking-tight text-white relative z-10"
+                >
+                  Project Intern (IIT Dhanbad)
+                </h3>
+                <p class="mt-1 text-sm text-zinc-400 relative z-10">
+                  Nov 2023 – Jul 2024 · 9 mos
+                </p>
+
+                <ul
+                  class="mt-3 space-y-2 text-sm text-zinc-400 relative z-10 list-disc list-inside experience-item"
+                >
+                  <li>
+                    Designed a redactable blockchain for digital twins in the
+                    healthcare sector, implementing secure data storage,
+                    data-sharing protocols, and IoT device authentication using
+                    Zero-Knowledge Proofs.
+                  </li>
+                  <li>
+                    Developed a privacy-preserving anomaly detection system
+                    using KNN and Homomorphic Encryption (HE), achieving 95.35%
+                    accuracy.
+                  </li>
+                  <div class="hidden-items" data-experience="iit">
+                    <li>
+                      Conducted literature reviews to align cryptographic
+                      methods with healthcare use cases and contributed to
+                      high-impact publications through Ethereum-based
+                      simulations on Azure Cloud.
+                    </li>
+                    <li>
+                      Delivered technical presentations to interdisciplinary
+                      teams, demonstrating scalability and efficiency of the
+                      proposed framework.
+                    </li>
+                  </div>
+                </ul>
+
+                <button
+                  class="mt-3 text-xs text-emerald-400 hover:text-emerald-300 transition relative z-10 read-more-btn"
+                  data-target="iit"
+                >
+                  Read more →
+                </button>
+
+                <div
+                  class="w-full h-[1px] absolute"
+                  style="
+                    top: 10%;
+                    left: 0%;
+                    background: linear-gradient(
+                      90deg,
+                      rgba(136, 136, 136, 0.3) 30%,
+                      #1d1f1f 70%
+                    );
+                    mask-image: linear-gradient(
+                      90deg,
+                      transparent,
+                      black 15%,
+                      black 85%,
+                      transparent
+                    );
+                    -webkit-mask-image: linear-gradient(
+                      90deg,
+                      transparent,
+                      black 15%,
+                      black 85%,
+                      transparent
+                    );
+                  "
+                ></div>
+                <div
+                  class="w-[1px] h-full absolute"
+                  style="
+                    left: 10%;
+                    top: 0%;
+                    background: linear-gradient(
+                      180deg,
+                      rgba(116, 116, 116, 0.3) 30%,
+                      #222424 70%
+                    );
+                    mask-image: linear-gradient(
+                      0deg,
+                      transparent,
+                      black 15%,
+                      black 85%,
+                      transparent
+                    );
+                    -webkit-mask-image: linear-gradient(
+                      0deg,
+                      transparent,
+                      black 15%,
+                      black 85%,
+                      transparent
+                    );
+                  "
+                ></div>
+                <div
+                  class="bg-slate-50/5 w-full h-[1px] absolute"
+                  style="
+                    bottom: 10%;
+                    left: 0%;
+                    mask-image: linear-gradient(
+                      90deg,
+                      transparent,
+                      black 15%,
+                      black 85%,
+                      transparent
+                    );
+                    -webkit-mask-image: linear-gradient(
+                      90deg,
+                      transparent,
+                      black 15%,
+                      black 85%,
+                      transparent
+                    );
+                  "
+                ></div>
+                <div
+                  class="bg-slate-50/5 w-[1px] h-full absolute"
+                  style="
+                    right: 10%;
+                    top: 0%;
+                    mask-image: linear-gradient(
+                      0deg,
+                      transparent,
+                      black 15%,
+                      black 85%,
+                      transparent
+                    );
+                    -webkit-mask-image: linear-gradient(
+                      0deg,
+                      transparent,
+                      black 15%,
+                      black 85%,
+                      transparent
+                    );
+                  "
+                ></div>
+              </div>
+            </div>
+
+            <!-- IIM Bangalore -->
+            <div
+              class="z-[1] integration-card rounded-2xl pt-[1px] pr-[1px] pb-[1px] pl-[1px] relative"
+              style="
+                background: radial-gradient(
+                  circle 230px at 0% 0%,
+                  rgba(239, 68, 68, 0.4),
+                  #0c0d0d
+                );
+              "
+            >
+              <div
+                class="z-[2] animated-dot bg-red-400 w-[5px] h-[5px] rounded-full absolute"
+                style="
+                  box-shadow: 0 0 10px rgba(239, 68, 68, 0.8);
+                  right: 10%;
+                  top: 10%;
+                  animation: moveDot 6s linear infinite;
+                  animation-play-state: paused;
+                "
+              ></div>
+              <div
+                class="hover:bg-white/10 transition-all duration-300 group z-[1] bg-white/5 h-full rounded-2xl pt-7 pr-9 pb-7 pl-9 relative backdrop-blur"
+                style="
+                  background: radial-gradient(
+                    circle 280px at 0% 0%,
+                    rgba(68, 68, 68, 0.3),
+                    #0c0d0d
+                  );
+                  border: 1px solid #202222;
+                "
+              >
+                <div
+                  class="blur-[10px] opacity-40 w-[220px] h-[45px] rounded-full absolute top-0 left-0"
+                  style="
+                    background-color: rgba(239, 68, 68, 0.3);
+                    box-shadow: 0 0 50px rgba(239, 68, 68, 0.5);
+                    transform: rotate(40deg);
+                    transform-origin: 10%;
+                  "
+                ></div>
+
+                <div class="flex items-start justify-between relative z-10">
+                  <div
+                    class="flex w-16 h-16 rounded-xl items-center justify-center"
+                  >
+                    <img
+                      src="./IIMB_Logo.png"
+                      alt="IIM Bangalore"
+                      class="w-full h-full object-contain"
+                    />
+                  </div>
+                  <span
+                    class="inline-flex items-center gap-1.5 text-xs text-zinc-300 bg-zinc-400/10 ring-zinc-400/20 ring-1 rounded-md pt-1 pr-2 pb-1 pl-2"
+                  >
+                    Analytics
+                  </span>
+                </div>
+
+                <h3
+                  class="mt-4 text-lg font-semibold tracking-tight text-white relative z-10"
+                >
+                  Project Intern (IIM Bangalore)
+                </h3>
+                <p class="mt-1 text-sm text-zinc-400 relative z-10">
+                  Apr 2023 – Jul 2023 · 4 mos
+                </p>
+
+                <ul
+                  class="mt-3 space-y-2 text-sm text-zinc-400 relative z-10 list-disc list-inside experience-item"
+                >
+                  <li>
+                    Conducted quantitative analysis on cryptocurrency datasets,
+                    identifying wallet patterns, exchange platforms, and HEX
+                    address activities.
+                  </li>
+                  <li>
+                    Designed heuristic algorithms to cluster 75,000+ HEX wallets
+                    and decode 53,000 Bitcoin and Ethereum addresses using API
+                    calls for affiliation prediction.
+                  </li>
+                  <div class="hidden-items" data-experience="iim">
+                    <li>
+                      Analyzed transaction volumes and correlations across
+                      centralized and decentralized exchanges to identify
+                      high-volume nodes and potential anomalies.
+                    </li>
+                    <li>
+                      Developed heuristic-based correlation analysis,
+                      visualizations, and clustering metrics to enhance
+                      predictive analytics for wallet identification.
+                    </li>
+                  </div>
+                </ul>
+
+                <button
+                  class="mt-3 text-xs text-emerald-400 hover:text-emerald-300 transition relative z-10 read-more-btn"
+                  data-target="iim"
+                >
+                  Read more →
+                </button>
+
+                <div
+                  class="w-full h-[1px] absolute"
+                  style="
+                    top: 10%;
+                    left: 0%;
+                    background: linear-gradient(
+                      90deg,
+                      rgba(136, 136, 136, 0.3) 30%,
+                      #1d1f1f 70%
+                    );
+                    mask-image: linear-gradient(
+                      90deg,
+                      transparent,
+                      black 15%,
+                      black 85%,
+                      transparent
+                    );
+                    -webkit-mask-image: linear-gradient(
+                      90deg,
+                      transparent,
+                      black 15%,
+                      black 85%,
+                      transparent
+                    );
+                  "
+                ></div>
+                <div
+                  class="w-[1px] h-full absolute"
+                  style="
+                    left: 10%;
+                    top: 0%;
+                    background: linear-gradient(
+                      180deg,
+                      rgba(116, 116, 116, 0.3) 30%,
+                      #222424 70%
+                    );
+                    mask-image: linear-gradient(
+                      0deg,
+                      transparent,
+                      black 15%,
+                      black 85%,
+                      transparent
+                    );
+                    -webkit-mask-image: linear-gradient(
+                      0deg,
+                      transparent,
+                      black 15%,
+                      black 85%,
+                      transparent
+                    );
+                  "
+                ></div>
+                <div
+                  class="bg-slate-50/5 w-full h-[1px] absolute"
+                  style="
+                    bottom: 10%;
+                    left: 0%;
+                    mask-image: linear-gradient(
+                      90deg,
+                      transparent,
+                      black 15%,
+                      black 85%,
+                      transparent
+                    );
+                    -webkit-mask-image: linear-gradient(
+                      90deg,
+                      transparent,
+                      black 15%,
+                      black 85%,
+                      transparent
+                    );
+                  "
+                ></div>
+                <div
+                  class="bg-slate-50/5 w-[1px] h-full absolute"
+                  style="
+                    right: 10%;
+                    top: 0%;
+                    mask-image: linear-gradient(
+                      0deg,
+                      transparent,
+                      black 15%,
+                      black 85%,
+                      transparent
+                    );
+                    -webkit-mask-image: linear-gradient(
+                      0deg,
+                      transparent,
+                      black 15%,
+                      black 85%,
+                      transparent
+                    );
+                  "
+                ></div>
+              </div>
+            </div>
+
+            <!-- RIT -->
+            <div
+              class="z-[1] integration-card rounded-2xl pt-[1px] pr-[1px] pb-[1px] pl-[1px] relative"
+              style="
+                background: radial-gradient(
+                  230px at 0% 0%,
+                  rgba(234, 179, 8, 0.4),
+                  rgb(12, 13, 13)
+                );
+              "
+            >
+              <div
+                class="z-[2] animated-dot bg-yellow-400 w-[5px] h-[5px] rounded-full absolute"
+                style="
+                  box-shadow: 0 0 10px rgba(234, 179, 8, 0.8);
+                  right: 10%;
+                  top: 10%;
+                  animation: moveDot 6s linear infinite;
+                  animation-play-state: paused;
+                "
+              ></div>
+              <div
+                class="hover:bg-white/10 transition-all duration-300 group z-[1] bg-white/5 h-full rounded-2xl pt-7 pr-9 pb-7 pl-9 relative backdrop-blur"
+                style="
+                  background: radial-gradient(
+                    280px at 0% 0%,
+                    rgba(68, 68, 68, 0.3),
+                    rgb(12, 13, 13)
+                  );
+                  border: 1px solid rgb(32, 34, 34);
+                "
+              >
+                <div
+                  class="blur-[10px] opacity-40 w-[220px] h-[45px] z-10 rounded-full absolute top-0 left-0"
+                  style="
+                    background-color: rgba(234, 179, 8, 0.3);
+                    box-shadow: 0 0 50px rgba(234, 179, 8, 0.5);
+                    transform: rotate(40deg);
+                    transform-origin: 10%;
+                  "
+                ></div>
+
+                <div class="flex items-start justify-between relative z-10">
+                  <div
+                    class="flex w-16 h-16 rounded-xl items-center justify-center"
+                  >
+                    <img
+                      src="RIT.png"
+                      alt="RIT"
+                      class="w-full h-full object-contain"
+                    />
+                  </div>
+                  <span
+                    class="inline-flex items-center gap-1.5 rounded-md bg-zinc-400/10 px-2 py-1 text-xs text-zinc-300 ring-1 ring-zinc-400/20"
+                  >
+                    Blockchain
+                  </span>
+                </div>
+
+                <h3
+                  class="mt-4 text-lg font-semibold tracking-tight text-white relative z-10"
+                >
+                  Undergraduate Researcher (RIT)
+                </h3>
+                <p class="mt-1 text-sm text-zinc-400 relative z-10">
+                  Jan 2023 – Jul 2023 · 7 mos
+                </p>
+
+                <ul
+                  class="mt-3 space-y-2 text-sm text-zinc-400 relative z-10 list-disc list-inside experience-item"
+                >
+                  <li>
+                    Conducted research on two projects, deploying a permissioned
+                    blockchain infrastructure for supply chain and e-commerce
+                    (ONDC) use cases.
+                  </li>
+                  <li>
+                    Built a full-stack decentralized application including smart
+                    contracts, APIs, frontend development, and blockchain
+                    security analysis.
+                  </li>
+                  <div class="hidden-items" data-experience="rit">
+                    <li>
+                      Evaluated blockchain network performance using the
+                      Hyperledger Caliper benchmarking tool.
+                    </li>
+                  </div>
+                </ul>
+
+                <button
+                  class="mt-3 text-xs text-emerald-400 hover:text-emerald-300 transition relative z-10 read-more-btn"
+                  data-target="rit"
+                >
+                  Read more →
+                </button>
+
+                <div
+                  class="w-full h-[1px] absolute"
+                  style="
+                    top: 10%;
+                    left: 0%;
+                    background: linear-gradient(
+                      90deg,
+                      rgba(136, 136, 136, 0.3) 30%,
+                      #1d1f1f 70%
+                    );
+                    mask-image: linear-gradient(
+                      90deg,
+                      transparent,
+                      black 15%,
+                      black 85%,
+                      transparent
+                    );
+                    -webkit-mask-image: linear-gradient(
+                      90deg,
+                      transparent,
+                      black 15%,
+                      black 85%,
+                      transparent
+                    );
+                  "
+                ></div>
+                <div
+                  class="w-[1px] h-full absolute"
+                  style="
+                    left: 10%;
+                    top: 0%;
+                    background: linear-gradient(
+                      180deg,
+                      rgba(116, 116, 116, 0.3) 30%,
+                      #222424 70%
+                    );
+                    mask-image: linear-gradient(
+                      360deg,
+                      transparent,
+                      black 15%,
+                      black 85%,
+                      transparent
+                    );
+                    -webkit-mask-image: linear-gradient(
+                      360deg,
+                      transparent,
+                      black 15%,
+                      black 85%,
+                      transparent
+                    );
+                  "
+                ></div>
+                <div
+                  class="bg-slate-50/5 w-full h-[1px] absolute"
+                  style="
+                    bottom: 10%;
+                    left: 0%;
+                    mask-image: linear-gradient(
+                      90deg,
+                      transparent,
+                      black 15%,
+                      black 85%,
+                      transparent
+                    );
+                    -webkit-mask-image: linear-gradient(
+                      90deg,
+                      transparent,
+                      black 15%,
+                      black 85%,
+                      transparent
+                    );
+                  "
+                ></div>
+                <div
+                  class="bg-slate-50/5 w-[1px] h-full absolute"
+                  style="
+                    right: 10%;
+                    top: 0%;
+                    mask-image: linear-gradient(
+                      0deg,
+                      transparent,
+                      black 15%,
+                      black 85%,
+                      transparent
+                    );
+                    -webkit-mask-image: linear-gradient(
+                      0deg,
+                      transparent,
+                      black 15%,
+                      black 85%,
+                      transparent
+                    );
+                  "
+                ></div>
+              </div>
+            </div>
+
+            <!-- NRiT TBI -->
+            <div
+              class="z-[1] integration-card rounded-2xl p-[1px] relative"
+              style="
+                background: radial-gradient(
+                  230px at 0% 0%,
+                  rgba(255, 255, 255, 0.35),
+                  rgb(12, 13, 13)
+                );
+              "
+            >
+              <div
+                class="z-[2] animated-dot bg-white w-[5px] h-[5px] rounded-full absolute"
+                style="
+                  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+                  right: 10%;
+                  top: 10%;
+                  animation: moveDot 6s linear infinite;
+                  animation-play-state: paused;
+                "
+              ></div>
+
+              <div
+                class="hover:bg-white/10 transition-all duration-300 group z-[1] bg-white/5 h-full rounded-2xl pt-7 pr-9 pb-7 pl-9 relative backdrop-blur"
+                style="
+                  background: radial-gradient(
+                    280px at 0% 0%,
+                    rgba(200, 200, 200, 0.25),
+                    rgb(12, 13, 13)
+                  );
+                  border: 1px solid rgb(32, 34, 34);
+                "
+              >
+                <div
+                  class="blur-[10px] opacity-40 w-[220px] h-[45px] z-10 rounded-full absolute top-0 left-0"
+                  style="
+                    background-color: rgba(255, 255, 255, 0.35);
+                    box-shadow: 0 0 50px rgba(255, 255, 255, 0.5);
+                    transform: rotate(40deg);
+                    transform-origin: 10%;
+                  "
+                ></div>
+
+                <div class="flex items-start justify-between relative z-10">
+                  <div
+                    class="flex w-16 h-16 rounded-xl items-center justify-center"
+                  >
+                    <img
+                      src="./NRiT.jpg"
+                      alt="NRiT"
+                      class="w-full h-full object-contain"
+                    />
+                  </div>
+                  <span
+                    class="inline-flex items-center gap-1.5 rounded-md bg-zinc-400/10 px-2 py-1 text-xs text-zinc-300 ring-1 ring-zinc-400/20"
+                  >
+                    Website Development
+                  </span>
+                </div>
+
+                <h3
+                  class="mt-4 text-lg font-semibold tracking-tight text-white relative z-10"
+                >
+                  Project Intern (NRiT TBI)
+                </h3>
+                <p class="mt-1 text-sm text-zinc-400 relative z-10">
+                  Feb 2022 – Dec 2022 · 11 mos
+                </p>
+
+                <ul
+                  class="mt-3 space-y-2 text-sm text-zinc-400 relative z-10 list-disc list-inside experience-item"
+                >
+                  <li>
+                    Worked on a sponsored project titled "9th Sense web portal
+                    for MSMEs and NGOs using AI, ML & Data Science."
+                  </li>
+                  <li>
+                    Built an automation system enabling MSMEs and NGOs to
+                    generate single-page websites.
+                  </li>
+                  <div class="hidden-items" data-experience="nrit">
+                    <li>
+                      Designed ML-based recommendation algorithms and a
+                      real-time chat application for customer interaction.
+                    </li>
+                  </div>
+                </ul>
+
+                <button
+                  class="mt-3 text-xs text-emerald-400 hover:text-emerald-300 transition relative z-10 read-more-btn"
+                  data-target="nrit"
+                >
+                  Read more →
+                </button>
+
+                <!-- Borders -->
+                <div
+                  class="absolute inset-x-0 top-[10%] h-px bg-white/10"
+                ></div>
+                <div
+                  class="absolute inset-y-0 left-[10%] w-px bg-white/10"
+                ></div>
+                <div
+                  class="absolute inset-x-0 bottom-[10%] h-px bg-white/10"
+                ></div>
+                <div
+                  class="absolute inset-y-0 right-[10%] w-px bg-white/10"
+                ></div>
+              </div>
+            </div>
+
+            <!-- 5TechG -->
+            <div
+              class="z-[1] integration-card rounded-2xl p-[1px] relative"
+              style="
+                background: radial-gradient(
+                  230px at 0% 0%,
+                  rgba(168, 85, 247, 0.45),
+                  rgb(12, 13, 13)
+                );
+              "
+            >
+              <div
+                class="z-[2] animated-dot bg-purple-500 w-[5px] h-[5px] rounded-full absolute"
+                style="
+                  box-shadow: 0 0 10px rgba(168, 85, 247, 0.9);
+                  right: 10%;
+                  top: 10%;
+                  animation: moveDot 6s linear infinite;
+                  animation-play-state: paused;
+                "
+              ></div>
+
+              <div
+                class="hover:bg-white/10 transition-all duration-300 group z-[1] bg-white/5 h-full rounded-2xl pt-7 pr-9 pb-7 pl-9 relative backdrop-blur"
+                style="
+                  background: radial-gradient(
+                    280px at 0% 0%,
+                    rgba(139, 92, 246, 0.3),
+                    rgb(12, 13, 13)
+                  );
+                  border: 1px solid rgb(32, 34, 34);
+                "
+              >
+                <div
+                  class="blur-[10px] opacity-40 w-[220px] h-[45px] z-10 rounded-full absolute top-0 left-0"
+                  style="
+                    background-color: rgba(168, 85, 247, 0.35);
+                    box-shadow: 0 0 50px rgba(168, 85, 247, 0.6);
+                    transform: rotate(40deg);
+                    transform-origin: 10%;
+                  "
+                ></div>
+
+                <div class="flex items-start justify-between relative z-10">
+                  <div
+                    class="flex w-16 h-16 rounded-xl items-center justify-center"
+                  >
+                    <img
+                      src="./5techG.png"
+                      alt="5TechG"
+                      class="w-full h-full object-contain"
+                    />
+                  </div>
+                  <span
+                    class="inline-flex items-center gap-1.5 rounded-md bg-zinc-400/10 px-2 py-1 text-xs text-zinc-300 ring-1 ring-zinc-400/20"
+                  >
+                    Frontend Development
+                  </span>
+                </div>
+
+                <h3
+                  class="mt-4 text-lg font-semibold tracking-tight text-white relative z-10"
+                >
+                  Frontend Developer (5TechG Lab LLP)
+                </h3>
+                <p class="mt-1 text-sm text-zinc-400 relative z-10">
+                  Dec 2021 – Feb 2022 · 3 mos
+                </p>
+
+                <ul
+                  class="mt-3 space-y-2 text-sm text-zinc-400 relative z-10 list-disc list-inside experience-item"
+                >
+                  <li>
+                    Designed and implemented responsive UI for a
+                    production-level e-commerce platform (DB Agro).
+                  </li>
+                  <li>
+                    Optimized UI/UX workflows and ensured cross-browser
+                    compatibility.
+                  </li>
+                  <div class="hidden-items" data-experience="5tech">
+                    <li>
+                      Collaborated with backend teams using Agile practices and
+                      Git-based version control.
+                    </li>
+                  </div>
+                </ul>
+
+                <button
+                  class="mt-3 text-xs text-emerald-400 hover:text-emerald-300 transition relative z-10 read-more-btn"
+                  data-target="5tech"
+                >
+                  Read more →
+                </button>
+
+                <!-- Borders -->
+                <div
+                  class="absolute inset-x-0 top-[10%] h-px bg-purple-500/20"
+                ></div>
+                <div
+                  class="absolute inset-y-0 left-[10%] w-px bg-purple-500/20"
+                ></div>
+                <div
+                  class="absolute inset-x-0 bottom-[10%] h-px bg-purple-500/20"
+                ></div>
+                <div
+                  class="absolute inset-y-0 right-[10%] w-px bg-purple-500/20"
+                ></div>
+              </div>
+            </div>
+          </div>
+
+          <style>
+            @keyframes moveDot {
+              0%,
+              100% {
+                top: 10%;
+                right: 10%;
+              }
+              25% {
+                top: 10%;
+                right: calc(100% - 35px);
+              }
+              50% {
+                top: calc(100% - 30px);
+                right: calc(100% - 35px);
+              }
+              75% {
+                top: calc(100% - 30px);
+                right: 10%;
+              }
+            }
+
+            .integration-card:hover .animated-dot {
+              animation-play-state: running !important;
+            }
+          </style>
+        </div>
+      </section>
+
+      <!-- Publications -->
+      <!-- Publications Section - Sticky Portfolio Style -->
+      <section
+        id="publications"
+        class="relative border-b border-white/5 bg-black"
+      >
+        <div class="flex flex-col lg:flex-row">
+          <!-- Sticky Sidebar -->
+          <div
+            class="lg:w-1/3 lg:h-screen lg:sticky lg:top-0 p-6 md:p-12 flex flex-col justify-center border-r border-white/5 bg-black z-10"
+          >
+            <span
+              class="text-xs text-emerald-500 uppercase tracking-widest mb-6 block"
+              >Academic Work</span
+            >
+            <h2
+              class="text-3xl md:text-5xl font-display text-white mb-6 leading-tight tracking-tight"
+            >
+              Research<br />Publications
+            </h2>
+            <p class="text-white/60 text-sm leading-relaxed mb-8 max-w-sm">
+              Peer-reviewed research advancing the frontiers of blockchain
+              security, privacy-preserving machine learning, and cryptographic
+              systems for decentralized infrastructure.
+            </p>
+            <div class="flex flex-col gap-4">
+              <div
+                class="flex items-center gap-4 text-xs text-white/40 font-mono"
+              >
+                <span class="w-12 h-[1px] bg-white/20"></span>
+                <span>FRAMEWORK</span>
+              </div>
+              <div
+                class="flex items-center gap-4 text-xs text-white/40 font-mono"
+              >
+                <span class="w-12 h-[1px] bg-white/20"></span>
+                <span>HEALTHCARE</span>
+              </div>
+              <div
+                class="flex items-center gap-4 text-xs text-white/40 font-mono"
+              >
+                <span class="w-12 h-[1px] bg-white/20"></span>
+                <span>BLOCKCHAIN</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Scrollable Publications Content -->
+          <div class="lg:w-2/3 bg-black">
+            <!-- Publication 01: ZTML Framework -->
+            <div
+              class="group relative min-h-screen flex items-center p-6 md:p-16 border-b border-white/5 hover:bg-white/[0.02] transition-colors duration-500"
+            >
+              <div class="w-full">
+                <div class="flex justify-between items-baseline mb-6">
+                  <h3
+                    class="text-3xl md:text-5xl font-display text-white/80 group-hover:text-white transition-colors tracking-tight"
+                  >
+                    01. ZTML Framework
+                  </h3>
+                  <span class="text-xs font-mono text-white/40"
+                    >2024 / THESIS</span
+                  >
+                </div>
+                <div
+                  class="relative aspect-[20/10] w-full overflow-hidden bg-neutral-900 mb-8 grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out"
+                >
+                  <img
+                    src="./publication_1.png"
+                    class="w-full h-full object-cover transform scale-110 group-hover:scale-100 transition-transform duration-1000"
+                    alt="ZTML Framework"
+                  />
+                  <div
+                    class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/90 to-transparent opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500"
+                  >
+                    <div class="flex justify-between items-end">
+                      <p class="text-white text-xs tracking-widest uppercase">
+                        zkSNARK • TEE • Privacy-Preserving ML
+                      </p>
+                      <p class="text-white/70 font-mono text-xs">
+                        Master's Thesis
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="flex justify-between items-end border-t border-white/10 pt-6"
+                >
+                  <p class="text-white/60 text-sm max-w-md leading-relaxed">
+                    A Zero-Knowledge and TEE-Enabled Framework for
+                    Cryptographically Verifiable Machine Learning Inference.
+                    Combines zkSNARK proofs with trusted execution environments
+                    for provably correct AI inference.
+                  </p>
+                  <a
+                    href="https://drive.google.com/file/d/1FHLZMkhGFkLhfHDD2tSJk6uWiQh9Lr0V/view"
+                    target="_blank"
+                    class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M7 7h10v10"></path>
+                      <path d="M7 17 17 7"></path>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Publication 02: Healthcare Digital Twin -->
+            <div
+              class="group relative min-h-screen flex items-center p-6 md:p-16 border-b border-white/5 hover:bg-white/[0.02] transition-colors duration-500"
+            >
+              <div class="w-full">
+                <div class="flex justify-between items-baseline mb-6">
+                  <h3
+                    class="text-3xl md:text-5xl font-display text-white/80 group-hover:text-white transition-colors tracking-tight"
+                  >
+                    02. Healthcare Digital Twin
+                  </h3>
+                  <span class="text-xs font-mono text-white/40"
+                    >2024 / IIT</span
+                  >
+                </div>
+                <div
+                  class="relative aspect-[20/10] w-full overflow-hidden bg-neutral-900 mb-8 grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out"
+                >
+                  <img
+                    src="./publication_2.png"
+                    class="w-full h-full object-cover transform scale-110 group-hover:scale-100 transition-transform duration-1000"
+                    alt="Healthcare Digital Twin"
+                  />
+                  <div
+                    class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/90 to-transparent opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500"
+                  >
+                    <div class="flex justify-between items-end">
+                      <p class="text-white text-xs tracking-widest uppercase">
+                        Blockchain • IoT • Anomaly Detection
+                      </p>
+                      <p class="text-white/70 font-mono text-xs">
+                        95.35% Accuracy
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="flex justify-between items-end border-t border-white/10 pt-6"
+                >
+                  <p class="text-white/60 text-sm max-w-md leading-relaxed">
+                    Blockchain-Enhanced Healthcare Digital Twins with secure EHR
+                    management. Implemented redactable blockchain, IoT
+                    authentication using Zero-Knowledge Proofs, and
+                    privacy-preserving anomaly detection with Homomorphic
+                    Encryption.
+                  </p>
+                  <a
+                    href="https://drive.google.com/file/d/1Zlro-Ik7YOTSo4eSzyHP0T8mTksYQeDE/view"
+                    target="_blank"
+                    class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M7 7h10v10"></path>
+                      <path d="M7 17 17 7"></path>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Publication 03: Secure Digital Twin -->
+            <div
+              class="group relative min-h-screen flex items-center p-6 md:p-16 border-b border-white/5 hover:bg-white/[0.02] transition-colors duration-500"
+            >
+              <div class="w-full">
+                <div class="flex justify-between items-baseline mb-6">
+                  <h3
+                    class="text-3xl md:text-5xl font-display text-white/80 group-hover:text-white transition-colors tracking-tight"
+                  >
+                    03. Secure Digital Twin
+                  </h3>
+                  <span class="text-xs font-mono text-white/40"
+                    >2024 / IIT</span
+                  >
+                </div>
+                <div
+                  class="relative aspect-[20/10] w-full overflow-hidden bg-neutral-900 mb-8 grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out"
+                >
+                  <img
+                    src="./publication_3.png"
+                    class="w-full h-full object-cover transform scale-110 group-hover:scale-100 transition-transform duration-1000"
+                    alt="Secure Digital Twin"
+                  />
+                  <div
+                    class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/90 to-transparent opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500"
+                  >
+                    <div class="flex justify-between items-end">
+                      <p class="text-white text-xs tracking-widest uppercase">
+                        Cryptography • Healthcare • ZKP
+                      </p>
+                      <p class="text-white/70 font-mono text-xs">IIT Dhanbad</p>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="flex justify-between items-end border-t border-white/10 pt-6"
+                >
+                  <p class="text-white/60 text-sm max-w-md leading-relaxed">
+                    A cryptographic framework with redactable blockchain
+                    integration for healthcare systems. Ensures data integrity
+                    and privacy through advanced cryptographic protocols and
+                    secure data-sharing mechanisms.
+                  </p>
+                  <a
+                    href="https://drive.google.com/file/d/1YKa1oRUK1tDsU-8eY8wYQrbYWljvRKfa/view"
+                    target="_blank"
+                    class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M7 7h10v10"></path>
+                      <path d="M7 17 17 7"></path>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Publication 04: ONDC Blockchain -->
+            <div
+              class="group relative min-h-screen flex items-center p-6 md:p-16 border-b border-white/5 hover:bg-white/[0.02] transition-colors duration-500"
+            >
+              <div class="w-full">
+                <div class="flex justify-between items-baseline mb-6">
+                  <h3
+                    class="text-3xl md:text-5xl font-display text-white/80 group-hover:text-white transition-colors tracking-tight"
+                  >
+                    04. ONDC E-Commerce
+                  </h3>
+                  <span class="text-xs font-mono text-white/40"
+                    >2023 / RIT</span
+                  >
+                </div>
+                <div
+                  class="relative aspect-[20/10] w-full overflow-hidden bg-neutral-900 mb-8 grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out"
+                >
+                  <img
+                    src="./publication_4.png"
+                    class="w-full h-full object-cover transform scale-110 group-hover:scale-100 transition-transform duration-1000"
+                    alt="ONDC Blockchain"
+                  />
+                  <div
+                    class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/90 to-transparent opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500"
+                  >
+                    <div class="flex justify-between items-end">
+                      <p class="text-white text-xs tracking-widest uppercase">
+                        Hyperledger Fabric • E-Commerce • ONDC
+                      </p>
+                      <p class="text-white/70 font-mono text-xs">
+                        Performance Tested
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="flex justify-between items-end border-t border-white/10 pt-6"
+                >
+                  <p class="text-white/60 text-sm max-w-md leading-relaxed">
+                    Blockchain Revolutionizing E-commerce System with enhanced
+                    ONDC standards. Deployed permissioned Hyperledger Fabric
+                    infrastructure with full-stack dApp and Caliper benchmarking
+                    for India's open digital commerce network.
+                  </p>
+                  <a
+                    href="https://drive.google.com/file/d/1hQoMY98-6yYtLlPbFyu3CU7yAY9zJqmc/view"
+                    target="_blank"
+                    class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M7 7h10v10"></path>
+                      <path d="M7 17 17 7"></path>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Publication 05: Agriculture Supply Chain -->
+            <div
+              class="group relative min-h-screen flex items-center p-6 md:p-16 border-b border-white/5 hover:bg-white/[0.02] transition-colors duration-500"
+            >
+              <div class="w-full">
+                <div class="flex justify-between items-baseline mb-6">
+                  <h3
+                    class="text-3xl md:text-5xl font-display text-white/80 group-hover:text-white transition-colors tracking-tight"
+                  >
+                    05. Agriculture Supply Chain
+                  </h3>
+                  <span class="text-xs font-mono text-white/40"
+                    >2023 / SPRINGER</span
+                  >
+                </div>
+                <div
+                  class="relative aspect-[20/10] w-full overflow-hidden bg-neutral-900 mb-8 grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out"
+                >
+                  <img
+                    src="./publication-05.jpg"
+                    class="w-full h-full object-cover transform scale-110 group-hover:scale-100 transition-transform duration-1000"
+                    alt="Agriculture Supply Chain"
+                  />
+                  <div
+                    class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/90 to-transparent opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500"
+                  >
+                    <div class="flex justify-between items-end">
+                      <p class="text-white text-xs tracking-widest uppercase">
+                        Blockchain • Traceability • Agriculture
+                      </p>
+                      <p class="text-white/70 font-mono text-xs">
+                        Published: Springer
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="flex justify-between items-end border-t border-white/10 pt-6"
+                >
+                  <p class="text-white/60 text-sm max-w-md leading-relaxed">
+                    Blockchain-Based Supply Chain System for agriculture. Case
+                    study demonstrating end-to-end traceability, transparency,
+                    and trust in agricultural supply chains using distributed
+                    ledger technology. Awarded by government authorities.
+                  </p>
+                  <a
+                    href="https://link.springer.com/chapter/10.1007/978-3-031-34644-6_30"
+                    target="_blank"
+                    class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M7 7h10v10"></path>
+                      <path d="M7 17 17 7"></path>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Blogs -->
+      <section
+        class="z-10 sm:px-6 lg:px-8 max-w-7xl mr-auto ml-auto pt-8 pr-6 pb-20 pl-6 relative"
+        id="blogs"
+      >
+        <div
+          class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8"
+        >
+          <div>
+            <p
+              class="text-sm font-medium text-white/50 [animation:fadeSlideIn_1s_ease-out_0.1s_both] animate-on-scroll"
+            >
+              Writing & Insights
+            </p>
+            <h2
+              class="text-3xl sm:text-4xl md:text-5xl tracking-tighter [animation:fadeSlideIn_1s_ease-out_0.2s_both] animate-on-scroll"
+            >
+              Blogs & Articles
+            </h2>
+            <p
+              class="mt-3 text-base text-white/70 [animation:fadeSlideIn_1s_ease-out_0.3s_both] animate-on-scroll"
+            >
+              Technical deep-dives and thought leadership on AI, blockchain, and
+              cryptography.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-6">
+          <!-- Blog 1 -->
+          <div
+            class="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 [animation:fadeSlideIn_1s_ease-out_0.4s_both] animate-on-scroll hover:bg-white/10 transition"
+          >
+            <div class="p-5">
+              <div class="flex items-center gap-2 mb-3">
+                <span
+                  class="inline-flex items-center rounded-full border border-emerald-400/30 bg-emerald-400/15 px-2 py-0.5 text-[11px] font-medium text-emerald-200"
+                  >MEDIUM</span
+                >
+                <span class="text-xs text-white/40">10 min read</span>
+              </div>
+              <h3 class="text-lg font-semibold tracking-tight mb-2">
+                zkSNARKs Explained: A First-Principles Walkthrough
+              </h3>
+              <p class="text-sm text-white/60 mb-4">
+                Deep dive into zero-knowledge proofs from mathematical
+                foundations to practical implementations.
+              </p>
+              <a
+                href="https://medium.com/@shindepranav1105/zksnarks-explained-a-first-principles-walkthrough-75772897c251"
+                target="_blank"
+                class="inline-flex items-center gap-2 text-sm font-medium text-emerald-400 hover:text-emerald-300"
+              >
+                Read Article
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M7 7h10v10"></path>
+                  <path d="M7 17 17 7"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Blog 2 -->
+          <div
+            class="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 [animation:fadeSlideIn_1s_ease-out_0.5s_both] animate-on-scroll hover:bg-white/10 transition"
+          >
+            <div class="p-5">
+              <div class="flex items-center gap-2 mb-3">
+                <span
+                  class="inline-flex items-center rounded-full border border-purple-400/30 bg-purple-400/15 px-2 py-0.5 text-[11px] font-medium text-purple-200"
+                  >DEV.TO</span
+                >
+                <span class="text-xs text-white/40">8 min read</span>
+              </div>
+              <h3 class="text-lg font-semibold tracking-tight mb-2">
+                Small Language Models: A Better Way to Agentic AI
+              </h3>
+              <p class="text-sm text-white/60 mb-4">
+                Exploring how smaller, specialized language models enable more
+                efficient agentic systems.
+              </p>
+              <a
+                href="https://dev.to/coralprotocol/small-language-models-a-better-way-to-agentic-ai-4o7"
+                target="_blank"
+                class="inline-flex items-center gap-2 text-sm font-medium text-emerald-400 hover:text-emerald-300"
+              >
+                Read Article
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M7 7h10v10"></path>
+                  <path d="M7 17 17 7"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Blog 3 -->
+          <div
+            class="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 [animation:fadeSlideIn_1s_ease-out_0.6s_both] animate-on-scroll hover:bg-white/10 transition"
+          >
+            <div class="p-5">
+              <div class="flex items-center gap-2 mb-3">
+                <span
+                  class="inline-flex items-center rounded-full border border-sky-400/30 bg-sky-400/15 px-2 py-0.5 text-[11px] font-medium text-sky-200"
+                  >MEDIUM</span
+                >
+                <span class="text-xs text-white/40">12 min read</span>
+              </div>
+              <h3 class="text-lg font-semibold tracking-tight mb-2">
+                ONDC: Blockchain and ZKPs for Secure E-Commerce
+              </h3>
+              <p class="text-sm text-white/60 mb-4">
+                Building India's open network for digital commerce with
+                privacy-preserving technologies.
+              </p>
+              <a
+                href="https://medium.com/@shindepranav1105/ondc-blockchain-and-zkps-for-a-secure-privacy-preserving-e-commerce-future-db5b70c956f1"
+                target="_blank"
+                class="inline-flex items-center gap-2 text-sm font-medium text-emerald-400 hover:text-emerald-300"
+              >
+                Read Article
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M7 7h10v10"></path>
+                  <path d="M7 17 17 7"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Blog 4 -->
+          <div
+            class="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 [animation:fadeSlideIn_1s_ease-out_0.7s_both] animate-on-scroll hover:bg-white/10 transition"
+          >
+            <div class="p-5">
+              <div class="flex items-center gap-2 mb-3">
+                <span
+                  class="inline-flex items-center rounded-full border border-orange-400/30 bg-orange-400/15 px-2 py-0.5 text-[11px] font-medium text-orange-200"
+                  >MEDIUM</span
+                >
+                <span class="text-xs text-white/40">15 min read</span>
+              </div>
+              <h3 class="text-lg font-semibold tracking-tight mb-2">
+                Revolutionizing Electoral Bonds with Blockchain
+              </h3>
+              <p class="text-sm text-white/60 mb-4">
+                Transparency, privacy, and accountability in India's electoral
+                system using ZKPs.
+              </p>
+              <a
+                href="https://medium.com/@shindepranav1105/revolutionizing-electoral-bonds-in-india-transparency-privacy-accountability-with-blockchain-925f116465e5"
+                target="_blank"
+                class="inline-flex items-center gap-2 text-sm font-medium text-emerald-400 hover:text-emerald-300"
+              >
+                Read Article
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M7 7h10v10"></path>
+                  <path d="M7 17 17 7"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer
+        class="xl:mt-0 border-white/10 border-t mt-10 relative"
+        id="contact"
+      >
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div class="grid gap-8 md:grid-cols-4">
+            <div class="md:col-span-2">
+              <span class="text-2xl font-bold tracking-tight"
+                >Pranav Shinde</span
+              >
+              <p class="mt-4 text-sm text-white/70 max-w-md">
+                Research Engineer specializing in
+                Privacy-preserving ML, Trusted Execution Environments, and
+                Zero-Knowledge Proofs.
+              </p>
+              <div class="mt-4 flex items-center gap-3">
+                <a
+                  href="https://www.linkedin.com/in/pranav-n-shinde"
+                  target="_blank"
+                  class="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm font-medium text-white/90 hover:bg-white/10"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+                    />
+                  </svg>
+                  LinkedIn
+                </a>
+                <a
+                  href="https://github.com/Pranav-7"
+                  target="_blank"
+                  class="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm font-medium text-white/90 hover:bg-white/10"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                    />
+                  </svg>
+                  GitHub
+                </a>
+                <a
+                  href="mailto:pranav.shinde@topsarv.com"
+                  class="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm font-medium text-white/90 hover:bg-white/10"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                  </svg>
+                  Email
+                </a>
+              </div>
+            </div>
+
+            <div>
+              <h4 class="text-sm font-semibold tracking-tight">Quick Links</h4>
+              <ul class="mt-3 space-y-2 text-sm text-white/70">
+                <li><a href="#about" class="hover:text-white">About</a></li>
+                <li>
+                  <a href="#projects" class="hover:text-white">Projects</a>
+                </li>
+                <li>
+                  <a href="#experience" class="hover:text-white">Experience</a>
+                </li>
+                <li>
+                  <a href="#publications" class="hover:text-white"
+                    >Publications</a
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 class="text-sm font-semibold tracking-tight">Connect</h4>
+              <ul class="mt-3 space-y-2 text-sm text-white/70">
+                <li><a href="#blogs" class="hover:text-white">Blogs</a></li>
+                <li>
+                  <a
+                    href="mailto:shindepranav1105@gmail.com"
+                    class="hover:text-white"
+                    >Contact</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div
+            class="mt-10 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-white/10 pt-6"
+          >
+            <p class="text-xs text-white/50">
+              © <span id="year">2025</span> Pranav Shinde. All rights reserved.
+            </p>
+            <p class="text-xs text-white/50">
+              Built with passion for secure, decentralized systems.
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+      // Initialize icons
+      lucide.createIcons();
+
+      // Year
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        });
+      });
+
+      // Read More functionality for experience section
+      document.querySelectorAll(".read-more-btn").forEach((button) => {
+        button.addEventListener("click", function () {
+          const targetId = this.getAttribute("data-target");
+          const hiddenItems = document.querySelector(
+            `.hidden-items[data-experience="${targetId}"]`
+          );
+
+          if (hiddenItems.classList.contains("show")) {
+            hiddenItems.classList.remove("show");
+            this.textContent = "Read more →";
+          } else {
+            hiddenItems.classList.add("show");
+            this.textContent = "Show less ←";
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
